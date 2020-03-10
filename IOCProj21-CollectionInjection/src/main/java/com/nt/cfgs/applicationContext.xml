@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<!-- Date classes cfg -->
+	<bean id="sysDt"  class="java.util.Date"/>
+	<!-- Date class with dob -->
+	<bean id="dobDt"  class="java.util.Date">
+	      <property name="year"  value="90"/>
+	      <property name="month"  value="9"/>
+	      <property name="date"  value="10"/>
+	</bean>
+	<!-- Date with  doj -->
+	<bean id="dojDt"  class="java.util.Date">
+	      <property name="year"  value="113"/>
+	      <property name="month"  value="10"/>
+	      <property name="date"  value="23"/>
+	</bean>
+	
+  <!-- Student Cfg -->
+  <bean id="st"  class="com.nt.beans.Student">
+     <property name="marks">
+          <array>
+             <value>90</value>
+              <value>90</value>
+             <value>100</value>
+             <value>60</value>
+          </array>
+     </property>
+     <property name="dates">
+          <list>
+             <ref bean="sysDt"/>
+             <ref bean="sysDt"/>
+             <ref bean="dobDt"/>
+             <ref bean="dojDt"/>
+         </list>
+     </property>
+  </bean>
+  
+  <bean id="univrsty"  class="com.nt.beans.University">
+      <property name="courses">
+          <list>
+             <value>engg</value>
+             <value>MBA</value>
+             <value>MCA</value>
+             <value>B.sc</value>
+          </list>
+      </property>
+  </bean>
+  
+  <bean id="userInfo"   class="com.nt.beans.UserInfo">
+         <property name="phoneNumbers">
+            <set>
+               <value>9999999999</value>
+               <value>8888888888</value>
+               <value>7777777777</value>
+               <value>9999999999</value>
+            </set>
+         </property>
+         <property name="dates">
+             <set>
+                 <ref bean="sysDt"/>
+                 <ref  bean="dojDt"/>
+                 <ref bean="dobDt"/>
+             </set>
+         </property>
+  </bean>
+  
+  <bean id="fp"  class="com.nt.beans.FacultyProfile">
+       <property name="facultySubjects">
+         <map>
+             <entry key="Hari" value="CoreJava"/>
+             <entry>
+                 <key><value>murali</value></key>
+                 <value>oracle</value>
+             </entry>
+             <entry key="gupta">
+                <value>CoreJava</value>
+             </entry>
+             <entry  value="oracle">
+                 <key><value>vijay</value></key>
+             </entry>
+         </map>
+       </property>
+       <property name="impDates">
+           <map>
+              <entry key="curDate"  value-ref="sysDt"/>
+              <entry>
+                 <key><value>dob</value></key>
+                 <ref bean="dobDt"/>
+              </entry>
+              <entry key="doj">
+                  <ref bean="dojDt"/>
+              </entry>
+           </map>
+       </property>
+  </bean>
+  
+  <bean id="fstore"   class="com.nt.beans.FruitStore">
+         <constructor-arg>
+            <props>
+                <prop key="banana">green</prop>
+                <prop key="apple">green</prop>
+                <prop key="grapes">black</prop>
+                <prop key="grapes">green</prop>
+                <prop key="dragon">pink</prop>
+            </props>
+         </constructor-arg>
+  
+  </bean>
+</beans>

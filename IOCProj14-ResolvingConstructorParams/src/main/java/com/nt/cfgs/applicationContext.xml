@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="st"  class="com.nt.beans.Student">
+	  <constructor-arg  value="raja"  type="java.lang.String"/>
+	    <constructor-arg value="1001" type="int"  name="no"/>
+	    <constructor-arg  value="90.4f"  type="float"/>
+	    <property name="sname"  value="king"/>
+	</bean>
+	
+<!-- 	<bean id="mk"  class="com.nt.beans.Marks">
+	    <constructor-arg  value="40" index="1"/>
+	    <constructor-arg  value="89" index="2"/>
+	      <constructor-arg  value="90" index="0"/>
+	</bean>
+ -->	
+ 
+  	<bean id="mk"  class="com.nt.beans.Marks">
+	    <constructor-arg  value="40" name="m1"  index="0" />
+	    <constructor-arg  value="89" name="m2"  index="1"/>
+	      <constructor-arg  value="90" name="m3"  index="2"/>
+	</bean>
+
+
+</beans>

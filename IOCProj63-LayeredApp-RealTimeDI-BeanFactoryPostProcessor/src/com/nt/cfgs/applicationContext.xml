@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- DriverManagerDataSource dependent class cfgs -->
+<bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="${jdbc.driver}"/>
+	<property name="url" value="${jdbc.url}"/>
+	<property name="username" value="${jdbc.username}"/>
+	<property name="password" value="${jdbc.pwd}"/>
+</bean>
+
+<!-- DAO class cfgs -->
+<bean id="empDao" class="com.nt.dao.EmployeeDAOImpl">
+	<constructor-arg ref="drds"/>
+	<constructor-arg value="${os.name}"/>
+	<constructor-arg  value="${Path}"/>
+</bean>
+<!--Service class cfgs-->
+<bean id="empService" class="com.nt.service.EmployeeServiceImpl">
+	<constructor-arg ref="empDao"/>
+</bean>
+<!-- Controller class cfg -->
+<bean id="controller"  class="com.nt.controller.MainController">
+     <constructor-arg  ref="empService"/>
+</bean>
+
+<!-- PropertyPlaceHolderConfigure -->
+<bean id="pphc"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+   <property name="locations">
+       <array>
+          <value>com/nt/commons/jdbc2.properties</value>
+          <value>com/nt/commons/jdbc1.properties</value>
+       </array>
+   </property>
+</bean>
+
+<!--  <context:property-placeholder location="com/nt/commons/jdbc2.properties,com/nt/commons/jdbc1.properties"/>
+ -->
+</beans>

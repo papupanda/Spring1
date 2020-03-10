@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-merge="true"   xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="base1stYear"  class="com.nt.beans.EnggCourse"  abstract="true">
+       <constructor-arg name="subjects">
+         <list>
+             <value>C</value>
+             <value>M1</value>
+             <value>English</value>
+          </list>
+       </constructor-arg>
+  </bean>
+   <bean id="ec1stYear"  class="com.nt.beans.EnggCourse"  parent="base1stYear">
+      <constructor-arg name="subjects"  >
+       <list merge="default" >
+          <value>EDC</value>
+          <value>AC</value>
+          <value>C</value>
+       </list>
+       </constructor-arg>
+   </bean>
+
+
+</beans>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- Handler Mappings -->
+  
+  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+     <property name="mappings">
+       <props>
+         <prop key="home.htm">pvc</prop>
+       </props>
+     </property>
+  </bean>
+  
+  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+     <property name="mappings">
+       <props>
+         <prop key="wish.htm">wmgc</prop>
+         <prop key="about_us.htm">pvc1</prop>
+         <prop key="contact_us.htm">pvc1</prop>
+       </props>
+     </property>
+     <property name="interceptors">
+         <array>
+            <ref bean="tci"/>
+         </array>
+     </property>
+  </bean>
+  
+  <!-- Handler/Controller classes -->
+  <!-- <bean id="ufvc" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/> -->
+  <bean id="pvc" class="org.springframework.web.servlet.mvc.ParameterizableViewController"/>
+  <bean id="pvc1" class="org.springframework.web.servlet.mvc.ParameterizableViewController"/>
+  
+  <bean id="wmgc" class="com.nt.controller.WishMessageGeneratorController">
+     <constructor-arg ref="wService"/>
+  </bean>
+  
+  <!-- cfg Interceptor -->
+  <bean id="tci" class="com.nt.interceptor.TimeoutCheckInterceptor"/>
+  
+  
+  
+  <!-- View Resolver -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     <property name="prefix" value="/WEB-INF/pages/"/>
+     <property name="suffix" value=".jsp"/>
+  </bean>
+
+</beans>

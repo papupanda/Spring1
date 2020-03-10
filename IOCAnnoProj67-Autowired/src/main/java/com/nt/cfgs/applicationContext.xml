@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans    xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+      <!-- Dependent bean cfg -->
+      
+      <bean id="date"  class="java.util.Date"/>
+    
+      <bean id="courier"   class="com.nt.beans.BlueDart" >
+         <property name="branch"  value="ameerpet-hyd"/>
+      </bean>
+      
+       <bean id="courier1"   class="com.nt.beans.BlueDart" >
+         <property name="branch"  value="SRNGAGAR-hyd"/>
+         <qualifier value="cr2"/>
+      </bean>
+      
+       <bean id="courier2"   class="com.nt.beans.BlueDart" >
+         <property name="branch"  value="Begumpet-hyd"/>
+         <qualifier value="cr3"/>
+      </bean>
+      
+      
+      
+      <bean id="dtdc"  class="com.nt.beans.DTDC"  >
+           <property name="branch"  value="hyd"/>
+           <qualifier value="cr1"/>
+      </bean>
+      
+      
+      <!-- Target Bean cfg -->
+      <bean id="fpkt"  class="com.nt.beans.Flipkart"/>
+		
+		<context:annotation-config/>
+
+
+</beans>

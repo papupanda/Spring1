@@ -1,0 +1,18 @@
+SQL> create table spring_layered_employee(emp_no number(10) primary key,emp_name varchar2(20),emp_addrs varchar2(20),basic_salary float,gros
+s_salary float,net_salary float);
+
+Table created.
+
+SQL> desc spring_layered_employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_NO                                    NOT NULL NUMBER(10)
+ EMP_NAME                                           VARCHAR2(20)
+ EMP_ADDRS                                          VARCHAR2(20)
+ BASIC_SALARY                                       FLOAT(126)
+ GROSS_SALARY                                       FLOAT(126)
+ NET_SALARY                                         FLOAT(126)
+ 
+ 
+ SQL>create sequence eid_seq start with 100 increment by 1;
+  

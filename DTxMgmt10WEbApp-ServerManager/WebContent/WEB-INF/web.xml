@@ -1,0 +1,7 @@
+
+<web-app>
+  <display-name>DTxMgmt10WEbApp-ServerManager</display-name>
+  <welcome-file-list>
+    <welcome-file>fund_transfer.html</welcome-file>
+  </welcome-file-list>
+</web-app>

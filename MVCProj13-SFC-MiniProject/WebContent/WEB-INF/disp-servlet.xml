@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	 <!-- Handler mapping -->
+  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+     <property name="mappings">
+        <props>
+          <prop key="home.htm">pvc</prop>
+          <prop key="list_patients.htm">lpc</prop>
+          <prop key="patient_edit.htm">epc</prop>
+          <prop key="patient_delete.htm">dpc</prop>
+        </props>
+     </property>
+  </bean> 	
+  
+  <!-- Controller -->
+   <bean id="lpc"  class="com.nt.controller.ListPatientsController">
+     <constructor-arg  ref="hospitalService"/>
+   </bean>
+   
+   <bean id="epc"  class="com.nt.controller.EditPatientController">
+      <property name="commandName" value="patientCmd"/>
+      <property name="commandClass" value="com.nt.command.PatientDetailsCommand"/>
+      <property name="formView" value="edit_patient"/>
+      <property name="successView" value="list_patients"/>
+      <property name="sessionForm" value="true"/>
+      <constructor-arg ref="hospitalService"/>
+    
+   </bean>
+   
+   <bean id="dpc"  class="com.nt.controller.DeletePatientController">
+      <constructor-arg ref="hospitalService"/>
+   </bean>
+   
+   <bean id="pvc"  class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+      <property name="viewName" value="welcome"/>
+   </bean>
+  
+ 
+  
+  <!-- View resolver -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     <property name="prefix" value="/WEB-INF/pages/"/>
+     <property name="suffix" value=".jsp"/>
+  </bean>
+
+</beans>

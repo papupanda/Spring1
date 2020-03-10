@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   
+   <bean id="pad"  class="com.nt.beans.PersonAadharDetails">
+        <property name="ano"  value="99999991122"/>
+        <property name="age"  value="30"/>
+        <property name="name"  value="raja"/>
+        <property name="currentLocale"  value="hi-IN"/>
+        <property name="dob"  value="10/12/1997"/>
+        <property name="currency"   value="INR"/>
+        <property name="favoriteJavaClass"   value="java.util.Date"/>
+        <property name="gender"  value="M"/>
+        <property name="single"  value="true"/>
+        <property name="income"  value="4324243.44"/>
+        <property name="verifies"  value="rahul,modi"/>
+        <property name="intials"  value="RNR"/>
+        <property name="linkedInUrl"  value="https://linkedIn.com"/>
+        <property name="photoPath"  value="e:/photos/raja.gif"/>
+   </bean>
+
+</beans>

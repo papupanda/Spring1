@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-dependency-check="all" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<!-- Target class -->
+  <bean id="india"  class="com.nt.beans.India" dependency-check="default">
+      <property name="countryCode" value="91"/>
+      <property name="nickName"  value="Bharat"/>
+       <property name="area"  value="40000"/> 
+        <property name="kashmir"  ref="st_kashmir"/>  
+  </bean>
+  
+  <!-- Dependent class -->
+  <bean id="st_kashmir"  class="com.nt.beans.Kashmir" dependency-check="none">
+      <property name="name"  value="Great Kashmir"/>
+      <property name="type"  value="State"/>
+<!--       <property name="area"   value="2000"/> -->
+  </bean>
+
+</beans>

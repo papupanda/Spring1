@@ -1,0 +1,9 @@
+SQL> create table spring_layered_employee(emp_no int(10) primary key  auto increment ,emp_name varchar(20),emp_addrs varchar(20),basic_salary float,gros
+s_salary float,net_salary float);
+
+Table created.
+
+
+ 
+
+  

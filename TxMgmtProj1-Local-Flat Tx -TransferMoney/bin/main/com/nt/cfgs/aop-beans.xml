@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- Cfg DataSourceTransactionManager -->
+    <bean id="dsTxMgmr"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource"  ref="hkcpDs"/>
+    </bean>
+    
+    <!-- Pointcut cum advisor to appy Tx service -->
+    <bean id="nmtas"  class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+        <property name="properties">
+           <props>
+              <prop key="transferMoney">timeout_0010,PROPAGATION_REQUIRED,-java.lang.IllegalAccessException,readOnly</prop>
+           </props>
+        </property>
+    </bean>
+    
+    <!-- cfg TransactionFactoryBean -->
+    <bean id="tpfb"  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+         <property name="transactionManager"  ref="dsTxMgmr"/>
+         <property name="transactionAttributeSource"  ref="nmtas"/>
+         <property name="target"  ref="bankService"/>
+    </bean>
+</beans>

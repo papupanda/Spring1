@@ -1,0 +1,10 @@
+CREATE OR REPLACE PROCEDURE P_AUTH(user in varchar, pass in varchar, result out varchar) AS 
+  cnt  number(2);
+BEGIN
+    SELECT COUNT(*) INTO cnt FROM USERLIST WHERE UNAME=user AND PWD=pass;
+    if(cnt<>0)then
+       result:='VALID CREDENTIALS';
+    else
+       result:='INVALID CREDENTIALS';
+    end if;
+END;

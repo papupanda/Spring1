@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+   <!-- <bean id="iad"  class="com.nt.beans.IntrestAmountDetails">
+          <property name="pAmt"  value="100000"/>
+          <property name="rate"  value="2"/>
+          <property name="time"  value="12"/>
+   </bean>
+   
+   <bean id="blm"   class="com.nt.beans.BankLoanMgmt">
+       <property name="details"  ref="iad"/>
+   </bean> -->
+
+     <bean id="blm"  class="com.nt.beans.BankLoanMgmt">
+        <property name="details"  value="100000,2,12"/>
+    </bean> 
+    
+    
+    <bean id="cec"  class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+         <property name="customEditors">
+             <map>
+                <entry  key="com.nt.beans.IntrestAmountDetails" 
+                      value="com.nt.peditor.IntrestAmountDetailsEditor"/>
+             </map>
+         </property>
+    </bean>
+    
+
+
+</beans>

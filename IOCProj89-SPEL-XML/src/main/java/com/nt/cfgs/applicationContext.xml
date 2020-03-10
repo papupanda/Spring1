@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="sysDate"  class="java.util.Date"/>
+	
+	<bean id="tc"  class="com.nt.beans.TreatmentCharges">
+	   <property name="date"  value="#{sysDate}"/>
+	   <property name="cardioTreatements">
+	      <set>
+	        <value>angiography</value>
+	        <value>ByPassSurgery</value>
+	        <value>HeartTransplantation</value>
+	        <value>angioplasty</value>
+	      </set>
+	   </property>
+	    <property name="cardioTreatementCharges">
+	      <map>
+	          <entry key="angiography"  value="10000"/>
+	          <entry key="ByPassSurgery" value="1000000"/>
+	          <entry key="HeartTransplantation"  value="10000000"/>
+	          <entry key="angioplasty"  value="100000"/>
+	      </map>
+	   </property>
+	   
+	     <property name="orthoTreatements">
+	      <set>
+	        <value>KRT</value>
+	        <value>BF</value>
+	        <value>DL</value>
+	        <value>SPS</value>
+	      </set>
+	   </property>
+	    <property name="orthoTreatementCharges">
+	      <map>
+	          <entry key="KRT"  value="300000"/>
+	          <entry key="BF" value="100000"/>
+	          <entry key="DL"  value="30000"/>
+	          <entry key="SPS"  value="100000"/>
+	      </map>
+	   </property>
+	   
+	     <property name="naturopathyTreatements">
+	      <set>
+	        <value>Masaz</value>
+	        <value>SteamBath</value>
+	        <value>MudPack</value>
+	        <value>Acupanture</value>
+	      </set>
+	   </property>
+	    <property name="naturopathyTreatementCharges">
+	      <map>
+	          <entry key="Masaz"  value="500"/>
+	          <entry key="SteamBath" value="300"/>
+	          <entry key="MudPack"  value="300"/>
+	          <entry key="Acupanture"  value="1000"/>
+	      </map>
+	   </property>
+	</bean>
+	
+	<bean id="patient"  class="com.nt.beans.SeniorPatient">
+	   <property name="pid"  value="#{ T(java.lang.Math).random()*100}"/>
+	   <property name="pname" value="raja"/>
+	   <property name="billDate"  value="#{sysDate}"/>
+	   <property name="age"  value="60"/>
+	   <property name="availedCardioTreatememts">
+	     <set>
+	        <value>#{tc.cardioTreatements[0]}</value>
+	        <value>#{tc.cardioTreatements[3]}</value>
+	     </set>
+	   </property>
+	   <property name="availedorthoTreatememts">
+	     <set>
+	        <value>#{tc.orthoTreatements[0]}</value>
+	        <value>#{tc.orthoTreatements[3]}</value>
+	     </set>
+	   </property>
+	   <property name="availedNaturopathyTreatememts">
+	     <set>
+	        <value>#{tc.naturopathyTreatements[0]}</value>
+	        <value>#{tc.naturopathyTreatements[1]}</value>
+	        <value>#{tc.naturopathyTreatements[2]}</value>
+	     </set>
+	   </property>
+	   <property name="cardioTreatementChargesTotal"  value="#{tc.cardioTreatementCharges['angiography'] + tc.cardioTreatementCharges['angioplasty'] }"/>
+	   <property name="orthoTreatementChargesTotal"  value="#{tc.orthoTreatementCharges['KRT'] +tc.orthoTreatementCharges['SPS']}"/>
+	   <property name="naturopathyTreatementChargesTotal"  value="#{tc.naturopathyTreatementCharges['Masaz'] +tc.naturopathyTreatementCharges['SteamBath']+tc.naturopathyTreatementCharges['MudPack']}"/>
+	   <property name="finalBillAmount" value="#{tc.cardioTreatementCharges['angiography'] + tc.cardioTreatementCharges['angioplasty'] + tc.orthoTreatementCharges['KRT'] +tc.orthoTreatementCharges['SPS'] + tc.naturopathyTreatementCharges['Masaz'] +tc.naturopathyTreatementCharges['SteamBath']+tc.naturopathyTreatementCharges['MudPack'] }"/>
+	</bean>
+
+
+</beans>
