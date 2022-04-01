@@ -34,13 +34,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>5.2.0.RELEASE</version>
+			<version>5.2.20.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>5.2.0.RELEASE</version>
+			<version>5.2.20.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nt</groupId>
