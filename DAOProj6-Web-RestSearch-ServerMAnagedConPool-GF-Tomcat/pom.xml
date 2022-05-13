@@ -55,6 +55,6 @@
     <finalName>DAOProj2-Web-RestSearch-ServerMAnagedConPool</finalName>
   </build>
   <properties>
-  	<spring.ver>5.1.10.RELEASE</spring.ver>
+  	<spring.ver>5.2.22.RELEASE</spring.ver>
   </properties>
 </project>
