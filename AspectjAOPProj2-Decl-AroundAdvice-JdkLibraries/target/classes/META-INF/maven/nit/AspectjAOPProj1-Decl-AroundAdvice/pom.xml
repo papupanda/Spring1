@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>5.2.1.RELEASE</version>
+			<version>5.2.24.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
 		<dependency>
